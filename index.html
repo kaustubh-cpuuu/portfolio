@@ -282,6 +282,71 @@
   @media (max-width:900px){
     .cstudy{grid-template-columns:1fr; padding:28px;}
   }
+
+  /* SERVICES */
+  .services-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .service-card{
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 22px; background:var(--bg-panel);
+  }
+  .service-card .si{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--teal);
+    letter-spacing:.06em; margin-bottom:14px;
+  }
+  .service-card h3{font-family:'Manrope',sans-serif; font-size:1.05rem; font-weight:700; margin:0 0 10px;}
+  .service-card p{color:var(--ink-dim); font-size:14px; margin:0;}
+
+  /* PROCESS */
+  .process-row{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;}
+  .process-step{
+    padding:0 22px 0 0; position:relative;
+  }
+  .process-step:not(:last-child)::after{
+    content:''; position:absolute; top:17px; right:0; width:22px; height:1px;
+    background:var(--line);
+  }
+  .process-num{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--teal);
+    border:1px solid var(--line); border-radius:50%;
+    width:34px; height:34px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .process-step h3{font-family:'Manrope',sans-serif; font-size:1rem; font-weight:700; margin:0 0 8px;}
+  .process-step p{color:var(--ink-dim); font-size:13.5px; margin:0;}
+
+  /* FAQ */
+  .faq-list{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding:22px 4px; display:flex; justify-content:space-between; align-items:center; gap:16px;
+    font-family:'Manrope',sans-serif; font-size:16px; font-weight:600; color:var(--ink);
+  }
+  .faq-q .plus{
+    font-family:'IBM Plex Mono', monospace; font-size:18px; color:var(--teal);
+    flex:none; transition:transform .2s ease;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0; overflow:hidden; transition:max-height .25s ease;
+  }
+  .faq-item.open .faq-a{max-height:200px;}
+  .faq-a p{color:var(--ink-dim); font-size:14.5px; margin:0 4px 22px; max-width:640px;}
+
+  /* trust line under contact */
+  .trust-line{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-faint);
+    margin-top:22px;
+  }
+
+  @media (max-width:900px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .process-row{grid-template-columns:1fr; gap:26px;}
+    .process-step:not(:last-child)::after{display:none;}
+  }
+  @media (max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
@@ -290,6 +355,7 @@
   <div class="nav-inner">
     <a href="#" class="logo">kaustubh<span>.ai</span></a>
     <nav class="links">
+      <a href="#services">Services</a>
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -313,7 +379,7 @@
     </div>
     <div class="hero-actions">
       <a href="#work" class="btn btn-primary">View projects →</a>
-      <a href="/Kaustubh_Vihirkar_Resume.pdf" class="btn btn-ghost">Download résumé</a>
+      <a href="Kaustubh_Vihirkar_Resume.pdf" download class="btn btn-ghost">Download résumé</a>
     </div>
 
     <div class="hero-canvas">
@@ -387,10 +453,40 @@
     </div>
   </section>
 
+  <!-- SERVICES -->
+  <section class="section" id="services" style="padding-bottom:0;">
+    <div class="section-head">
+      <span class="section-tag">02 / What I Can Build For You</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="si">01</div>
+        <h3>RAG Chatbots</h3>
+        <p>Chatbots that answer strictly from your own documents — policies, manuals, knowledge bases — grounded, accurate, and traceable to source.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="si">02</div>
+        <h3>Computer Vision Pipelines</h3>
+        <p>Segmentation, detection, and image generation models fine-tuned on your data and shipped to production, not left in a notebook.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="si">03</div>
+        <h3>Agentic AI Systems</h3>
+        <p>Multimodal assistants that combine voice, text, and business data — order tracking, support, recommendations — into one coherent agent.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="si">04</div>
+        <h3>Cloud Deployment &amp; MLOps</h3>
+        <p>Containerized, production-grade deployment on AWS/GCP — the model that works on your laptop, made to survive real traffic.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- CASE STUDIES -->
   <section class="section" id="work">
     <div class="section-head">
-      <span class="section-tag">02 / Case Studies</span>
+      <span class="section-tag">03 / Case Studies</span>
       <div class="section-line"></div>
     </div>
 
@@ -561,7 +657,7 @@
   <!-- MORE WORK -->
   <section class="section" style="padding-top:0;">
     <div class="section-head">
-      <span class="section-tag">03 / More Work</span>
+      <span class="section-tag">04 / More Work</span>
       <div class="section-line"></div>
     </div>
     <div class="project-grid">
@@ -605,10 +701,40 @@
     </div>
   </section>
 
+  <!-- PROCESS -->
+  <section class="section" style="padding-bottom:0;">
+    <div class="section-head">
+      <span class="section-tag">05 / How I Work</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="process-row">
+      <div class="process-step reveal">
+        <div class="process-num">01</div>
+        <h3>Discovery call</h3>
+        <p>A short call to understand the problem, your data, and constraints — no cost, no obligation.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">02</div>
+        <h3>Scoping &amp; proposal</h3>
+        <p>Clear scope, timeline, and cost before any work starts — you know what you're getting and when.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">03</div>
+        <h3>Build &amp; iterate</h3>
+        <p>Regular check-ins and working demos along the way, not a black box until the deadline.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">04</div>
+        <h3>Deploy &amp; handover</h3>
+        <p>Production deployment on your cloud of choice, with documentation so your team isn't dependent on me forever.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- EXPERIENCE -->
   <section class="section" id="experience">
     <div class="section-head">
-      <span class="section-tag">04 / Experience</span>
+      <span class="section-tag">06 / Experience</span>
       <div class="section-line"></div>
     </div>
     <div class="timeline">
@@ -643,15 +769,42 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-tag">07 / FAQ</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Do you work fixed-price or hourly?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Both — for well-scoped projects I usually quote a fixed price after the discovery call; for ongoing or open-ended work, hourly/retainer works better. We agree on this before anything starts.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Can you work with our existing AWS/GCP setup?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes — I've deployed on both AWS and GCP, and I'm comfortable working inside an existing cloud environment rather than starting from scratch.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">How fast can you start?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Typically within a few days of a scoped agreement. For urgent work, tell me the timeline on the discovery call and I'll be upfront about whether it's realistic.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Do you sign NDAs?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes, happy to sign an NDA before discussing any confidential details of your project.</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="contact-box reveal">
       <h2>Let's build something.</h2>
       <p>Open to full-time roles and select freelance / consulting work in computer vision and applied LLM systems.</p>
       <div class="contact-links">
-        <a class="btn btn-primary" href="mailto:kaustubhvihirkar99@gmail.com">kaustubhvihirkar99@gmail.com</a>
+        <a class="btn btn-primary" href="mailto:kaustubhvihirkar99@gmail.com?subject=Project%20inquiry">Email me — kaustubhvihirkar99@gmail.com</a>
         <a class="btn btn-ghost" href="tel:9822063325">+91 98220 63325</a>
       </div>
+      <div class="trust-line">Usually responds within 24 hours</div>
     </div>
   </section>
 
@@ -678,6 +831,21 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => io.observe(el));
   }
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 </script>
 
 </body>
