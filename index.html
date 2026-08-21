@@ -18,6 +18,7 @@
     --coral: #ff8f6b;
     --amber: #f2c14e;
     --violet: #a48cf2;
+    --aws: #ffb454;
     --radius: 3px;
   }
   *{box-sizing:border-box;}
@@ -223,6 +224,64 @@
   }
 
   :focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+
+  /* scroll reveal */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* HERO badges row */
+  .hero-badges{display:flex; gap:10px; flex-wrap:wrap; margin:0 0 40px;}
+  .hbadge{
+    font-family:'IBM Plex Mono', monospace; font-size:12px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid var(--line); border-radius:20px; padding:6px 13px;
+    color:var(--ink-dim);
+  }
+  .hbadge .sw{width:7px; height:7px; border-radius:50%; flex:none;}
+
+  /* CASE STUDIES */
+  .cstudy{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--bg-panel);
+    padding:44px;
+    display:grid; grid-template-columns:1fr 1.15fr; gap:48px;
+    margin-bottom:26px;
+  }
+  .cstudy:last-child{margin-bottom:0;}
+  .cs-kicker{
+    display:flex; align-items:center; gap:10px; margin-bottom:16px;
+  }
+  .cs-num{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-faint);}
+  .cs-badge{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:4px 10px; border-radius:20px; border:1px solid currentColor;
+  }
+  .cstudy h3{
+    font-family:'Space Grotesk',sans-serif; font-size:1.65rem; font-weight:600; margin:0 0 16px;
+    line-height:1.2;
+  }
+  .cs-block{margin-bottom:18px;}
+  .cs-block .lbl{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink-faint); margin-bottom:6px;
+  }
+  .cs-block p{margin:0; color:var(--ink-dim); font-size:14.5px;}
+  .cs-stack{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px;}
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    border-radius:20px; padding:5px 12px; display:inline-flex; align-items:center; gap:6px;
+    border:1px solid var(--line); color:var(--ink);
+  }
+  .chip .sw{width:6px; height:6px; border-radius:50%;}
+  .cs-diagram{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:#0d1117; padding:18px; display:flex; align-items:center; justify-content:center;
+  }
+  .cs-diagram svg{width:100%; height:auto; display:block;}
+
+  @media (max-width:900px){
+    .cstudy{grid-template-columns:1fr; padding:28px;}
+  }
 </style>
 </head>
 <body>
@@ -246,7 +305,12 @@
   <section class="hero">
     <div class="hero-eyebrow"><span class="dot"></span> AVAILABLE FOR WORK — JAIPUR, IN</div>
     <h1 class="hero-title">AI engineer building systems that <span class="accent">see, retrieve,</span> and <span class="accent">respond.</span></h1>
-    <p class="hero-sub">4+ years shipping production computer vision, agentic chatbots, and retrieval-augmented systems — from segmentation models to document-grounded RAG pipelines.</p>
+    <p class="hero-sub">4+ years shipping production computer vision, agentic chatbots, and retrieval-augmented systems — from segmentation models to document-grounded RAG pipelines deployed on AWS.</p>
+    <div class="hero-badges">
+      <span class="hbadge"><span class="sw" style="background:var(--aws)"></span>Deployed on AWS</span>
+      <span class="hbadge"><span class="sw" style="background:var(--violet)"></span>Powered by Claude 4.5 Sonnet</span>
+      <span class="hbadge"><span class="sw" style="background:var(--teal)"></span>Production RAG &amp; Agentic AI</span>
+    </div>
     <div class="hero-actions">
       <a href="#work" class="btn btn-primary">View projects →</a>
       <a href="/Kaustubh_Vihirkar_Resume.pdf" class="btn btn-ghost">Download résumé</a>
@@ -296,7 +360,7 @@
       <div class="stat"><div class="n">4+ yrs</div><div class="l">Production ML experience</div></div>
       <div class="stat"><div class="n">15+</div><div class="l">Models shipped to prod</div></div>
       <div class="stat"><div class="n">4</div><div class="l">Companies / teams</div></div>
-      <div class="stat"><div class="n">S3 → RAG</div><div class="l">Current focus area</div></div>
+      <div class="stat"><div class="n">AWS</div><div class="l">Cloud-native deployment</div></div>
     </div>
   </section>
 
@@ -306,7 +370,7 @@
       <span class="section-tag">01 / About</span>
       <div class="section-line"></div>
     </div>
-    <div class="about-grid">
+    <div class="about-grid reveal">
       <div class="about-text">
         <p><strong>I'm Kaustubh, an AI engineer</strong> who has spent the last four years moving deep learning models from notebooks into production — image segmentation for e-commerce, YOLO-based detection, generative retouching pipelines, and most recently, retrieval-augmented and reinforcement-learning systems built around real user documents.</p>
         <p>I care about the last mile: fine-tuning that actually improves boundary accuracy, inference that's fast enough for real traffic, and pipelines that survive contact with messy production data — not just clean benchmarks.</p>
@@ -323,42 +387,195 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- CASE STUDIES -->
   <section class="section" id="work">
     <div class="section-head">
-      <span class="section-tag">02 / Selected Work</span>
+      <span class="section-tag">02 / Case Studies</span>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- CASE STUDY 1: RAG CHATBOT -->
+    <div class="cstudy reveal">
+      <div>
+        <div class="cs-kicker">
+          <span class="cs-num">01</span>
+          <span class="cs-badge" style="color:var(--violet)">RAG · Agentic AI</span>
+        </div>
+        <h3>Document-grounded RAG chatbot, deployed on AWS with Claude 4.5 Sonnet</h3>
+        <div class="cs-block">
+          <div class="lbl">Problem</div>
+          <p>Users needed accurate answers drawn strictly from their own uploaded documents — not generic model knowledge — with responses that could be trusted for decision-making.</p>
+        </div>
+        <div class="cs-block">
+          <div class="lbl">Approach</div>
+          <p>Built an ingestion pipeline that chunks and embeds documents uploaded to Amazon S3, indexes them in a vector store, and retrieves relevant context per query. Claude 4.5 Sonnet generates the final answer strictly grounded in retrieved passages, reducing hallucination and keeping responses traceable to source text.</p>
+        </div>
+        <div class="cs-block">
+          <div class="lbl">Deployment</div>
+          <p>Containerized with Docker and deployed on AWS — S3 for document storage, compute for the retrieval/generation service — giving the system a scalable, cloud-native footprint from day one.</p>
+        </div>
+        <div class="cs-stack">
+          <span class="chip"><span class="sw" style="background:var(--violet)"></span>Claude 4.5 Sonnet</span>
+          <span class="chip"><span class="sw" style="background:var(--aws)"></span>AWS S3</span>
+          <span class="chip"><span class="sw" style="background:var(--aws)"></span>AWS Compute</span>
+          <span class="chip"><span class="sw" style="background:var(--teal)"></span>Vector Search</span>
+          <span class="chip"><span class="sw" style="background:var(--ink-dim)"></span>Docker</span>
+        </div>
+      </div>
+      <div class="cs-diagram">
+        <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RAG chatbot architecture diagram">
+          <defs>
+            <marker id="arrow1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#5c6773"/>
+            </marker>
+          </defs>
+          <!-- ingestion row -->
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5">
+            <rect x="14" y="26" width="88" height="40" rx="4" fill="none" stroke="#ffb454" stroke-width="1.3"/>
+            <text x="58" y="50" fill="#e9edf3" text-anchor="middle">Upload</text>
+            <text x="58" y="62" fill="#9aa6b2" text-anchor="middle" font-size="9">Amazon S3</text>
+
+            <line x1="102" y1="46" x2="140" y2="46" stroke="#5c6773" stroke-width="1.2" marker-end="url(#arrow1)"/>
+
+            <rect x="140" y="26" width="92" height="40" rx="4" fill="none" stroke="#5fd6c7" stroke-width="1.3"/>
+            <text x="186" y="46" fill="#e9edf3" text-anchor="middle">Chunk +</text>
+            <text x="186" y="58" fill="#e9edf3" text-anchor="middle">Embed</text>
+
+            <line x1="232" y1="46" x2="270" y2="46" stroke="#5c6773" stroke-width="1.2" marker-end="url(#arrow1)"/>
+
+            <rect x="270" y="26" width="92" height="40" rx="4" fill="none" stroke="#5fd6c7" stroke-width="1.3"/>
+            <text x="316" y="46" fill="#e9edf3" text-anchor="middle">Vector</text>
+            <text x="316" y="58" fill="#e9edf3" text-anchor="middle">Store</text>
+
+            <!-- query row -->
+            <rect x="14" y="150" width="88" height="40" rx="4" fill="none" stroke="#a48cf2" stroke-width="1.3"/>
+            <text x="58" y="174" fill="#e9edf3" text-anchor="middle">User</text>
+            <text x="58" y="186" fill="#9aa6b2" text-anchor="middle" font-size="9">question</text>
+
+            <line x1="102" y1="170" x2="140" y2="170" stroke="#5c6773" stroke-width="1.2" marker-end="url(#arrow1)"/>
+
+            <!-- connector from vector store down to retrieval -->
+            <line x1="316" y1="66" x2="316" y2="120" stroke="#5c6773" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <line x1="316" y1="120" x2="232" y2="120" stroke="#5c6773" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <line x1="232" y1="120" x2="232" y2="150" stroke="#5c6773" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrow1)"/>
+
+            <rect x="140" y="150" width="92" height="40" rx="4" fill="none" stroke="#5fd6c7" stroke-width="1.3"/>
+            <text x="186" y="170" fill="#e9edf3" text-anchor="middle">Retrieve</text>
+            <text x="186" y="182" fill="#e9edf3" text-anchor="middle">context</text>
+
+            <line x1="232" y1="170" x2="270" y2="170" stroke="#5c6773" stroke-width="1.2" marker-end="url(#arrow1)"/>
+
+            <rect x="270" y="150" width="120" height="46" rx="4" fill="#171225" stroke="#a48cf2" stroke-width="1.5"/>
+            <text x="330" y="170" fill="#e9edf3" text-anchor="middle" font-weight="600">Claude 4.5</text>
+            <text x="330" y="183" fill="#e9edf3" text-anchor="middle" font-weight="600">Sonnet</text>
+
+            <line x1="390" y1="173" x2="430" y2="173" stroke="#5c6773" stroke-width="1.2" marker-end="url(#arrow1)"/>
+
+            <rect x="430" y="150" width="80" height="46" rx="4" fill="none" stroke="#e9edf3" stroke-width="1.2"/>
+            <text x="470" y="170" fill="#e9edf3" text-anchor="middle">Grounded</text>
+            <text x="470" y="182" fill="#e9edf3" text-anchor="middle">answer</text>
+
+            <!-- animated flow dot -->
+            <circle r="3" fill="#5fd6c7">
+              <animateMotion dur="3.5s" repeatCount="indefinite"
+                path="M58,46 L186,46 L316,46 L316,120 L232,120 L232,170 L330,170 L470,170" />
+            </circle>
+          </g>
+
+          <text x="14" y="230" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5c6773">— Ingestion (top) feeds the retrieval + generation flow (bottom) —</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- CASE STUDY 2: DRL MATCHING -->
+    <div class="cstudy reveal">
+      <div>
+        <div class="cs-kicker">
+          <span class="cs-num">02</span>
+          <span class="cs-badge" style="color:var(--teal)">Reinforcement Learning</span>
+        </div>
+        <h3>DRL-based document matching engine on AWS</h3>
+        <div class="cs-block">
+          <div class="lbl">Problem</div>
+          <p>Static, rule-based matching couldn't keep up with varied document formats and evolving request patterns — match quality degraded as content diversity grew.</p>
+        </div>
+        <div class="cs-block">
+          <div class="lbl">Approach</div>
+          <p>Designed a Deep Reinforcement Learning agent that learns a matching policy over time: documents land in Amazon S3, get featurized, and the agent scores candidate matches against incoming requests, using a reward signal from match outcomes to keep improving.</p>
+        </div>
+        <div class="cs-block">
+          <div class="lbl">Deployment</div>
+          <p>Packaged with Docker and deployed on AWS for real-time inference, so match quality keeps compounding in production rather than needing manual rule updates.</p>
+        </div>
+        <div class="cs-stack">
+          <span class="chip"><span class="sw" style="background:var(--teal)"></span>Deep RL</span>
+          <span class="chip"><span class="sw" style="background:var(--aws)"></span>AWS S3</span>
+          <span class="chip"><span class="sw" style="background:var(--aws)"></span>AWS Compute</span>
+          <span class="chip"><span class="sw" style="background:var(--ink-dim)"></span>Docker</span>
+        </div>
+      </div>
+      <div class="cs-diagram">
+        <svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DRL document matching architecture diagram">
+          <defs>
+            <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#5c6773"/>
+            </marker>
+          </defs>
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5">
+            <rect x="14" y="90" width="90" height="42" rx="4" fill="none" stroke="#ffb454" stroke-width="1.3"/>
+            <text x="59" y="112" fill="#e9edf3" text-anchor="middle">Document</text>
+            <text x="59" y="124" fill="#9aa6b2" text-anchor="middle" font-size="9">→ Amazon S3</text>
+
+            <line x1="104" y1="111" x2="142" y2="111" stroke="#5c6773" stroke-width="1.2" marker-end="url(#arrow2)"/>
+
+            <rect x="142" y="90" width="90" height="42" rx="4" fill="none" stroke="#5fd6c7" stroke-width="1.3"/>
+            <text x="187" y="108" fill="#e9edf3" text-anchor="middle">Feature</text>
+            <text x="187" y="120" fill="#e9edf3" text-anchor="middle">extraction</text>
+
+            <line x1="232" y1="111" x2="270" y2="111" stroke="#5c6773" stroke-width="1.2" marker-end="url(#arrow2)"/>
+
+            <rect x="270" y="82" width="130" height="58" rx="4" fill="#0f1c1a" stroke="#5fd6c7" stroke-width="1.5"/>
+            <text x="335" y="106" fill="#e9edf3" text-anchor="middle" font-weight="600">DRL Matching</text>
+            <text x="335" y="120" fill="#e9edf3" text-anchor="middle" font-weight="600">Agent</text>
+
+            <line x1="400" y1="111" x2="438" y2="111" stroke="#5c6773" stroke-width="1.2" marker-end="url(#arrow2)"/>
+
+            <rect x="438" y="90" width="68" height="42" rx="4" fill="none" stroke="#e9edf3" stroke-width="1.2"/>
+            <text x="472" y="112" fill="#e9edf3" text-anchor="middle">Match</text>
+            <text x="472" y="124" fill="#e9edf3" text-anchor="middle">result</text>
+
+            <!-- reward feedback loop -->
+            <path d="M472,90 C472,40 335,30 335,80" fill="none" stroke="#f2c14e" stroke-width="1.3" stroke-dasharray="4 4"/>
+            <text x="400" y="42" fill="#f2c14e" text-anchor="middle" font-size="9.5">reward feedback</text>
+
+            <circle r="3" fill="#5fd6c7">
+              <animateMotion dur="3s" repeatCount="indefinite"
+                path="M59,111 L187,111 L335,111 L472,111" />
+            </circle>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- MORE WORK -->
+  <section class="section" style="padding-top:0;">
+    <div class="section-head">
+      <span class="section-tag">03 / More Work</span>
       <div class="section-line"></div>
     </div>
     <div class="project-grid">
 
-      <div class="card">
-        <div class="card-top">
-          <h3>DRL Document Matching</h3>
-          <span class="card-tag tag-teal">RL</span>
-        </div>
-        <p>A reinforcement-learning matching engine: users upload documents to Amazon S3, and incoming requests are matched to the right document in real time using a reward-driven pipeline that improves with feedback.</p>
-        <div class="card-tools"><span>Deep RL</span><span>AWS S3</span><span>Docker</span></div>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <h3>RAG Chatbot for Documents</h3>
-          <span class="card-tag tag-teal">RAG</span>
-        </div>
-        <p>Retrieval-augmented chatbot that answers questions grounded in a user's own uploaded files — chunking, embeddings, vector retrieval, and LLM generation stitched into one seamless upload-and-ask flow.</p>
-        <div class="card-tools"><span>Embeddings</span><span>Vector Search</span><span>LLM</span></div>
-      </div>
-
-      <div class="card">
+      <div class="card reveal">
         <div class="card-top">
           <h3>Shopping Assistant Chatbot</h3>
           <span class="card-tag tag-coral">Agentic AI</span>
         </div>
-        <p>Multimodal virtual shopping assistant with voice and text — Whisper for speech-to-text, GPT-4o mini for understanding, and TTS for natural voice replies, backed by custom Django APIs.</p>
-        <div class="card-tools"><span>Whisper</span><span>GPT-4o mini</span><span>Django</span></div>
+        <p>Multimodal virtual shopping assistant with voice and text — Whisper for speech-to-text, an LLM for understanding, and TTS for natural voice replies, backed by custom Django APIs.</p>
+        <div class="card-tools"><span>Whisper</span><span>LLM</span><span>Django</span></div>
       </div>
 
-      <div class="card">
+      <div class="card reveal">
         <div class="card-top">
           <h3>E-Commerce Image Segmentation</h3>
           <span class="card-tag tag-amber">Vision</span>
@@ -367,7 +584,7 @@
         <div class="card-tools"><span>UNet++</span><span>Attention UNet</span><span>OpenCV</span></div>
       </div>
 
-      <div class="card">
+      <div class="card reveal">
         <div class="card-top">
           <h3>YOLO Product Detection</h3>
           <span class="card-tag tag-amber">Vision</span>
@@ -376,13 +593,13 @@
         <div class="card-tools"><span>YOLOv8</span><span>Quantization</span><span>GCP</span></div>
       </div>
 
-      <div class="card">
+      <div class="card reveal">
         <div class="card-top">
           <h3>Generative Book Covers</h3>
           <span class="card-tag tag-violet">Generative</span>
         </div>
-        <p>Pipeline that turns a book summary and author name into market-ready cover art — extracting mood, theme and genre, then driving the Gemini image model to produce multiple on-brief variations.</p>
-        <div class="card-tools"><span>Gemini</span><span>Prompt Pipelines</span></div>
+        <p>Pipeline that turns a book summary and author name into market-ready cover art — extracting mood, theme and genre, then driving an image generation model to produce multiple on-brief variations.</p>
+        <div class="card-tools"><span>Image Gen</span><span>Prompt Pipelines</span></div>
       </div>
 
     </div>
@@ -391,7 +608,7 @@
   <!-- EXPERIENCE -->
   <section class="section" id="experience">
     <div class="section-head">
-      <span class="section-tag">03 / Experience</span>
+      <span class="section-tag">04 / Experience</span>
       <div class="section-line"></div>
     </div>
     <div class="timeline">
@@ -400,7 +617,7 @@
           <div class="t-role">AI Engineer <span>· GOML</span></div>
           <div class="t-date">Mar 2026 — Present</div>
         </div>
-        <div class="t-desc">Building DRL-based document matching and a RAG chatbot for user-uploaded documents, from S3 ingestion through retrieval and grounded generation.</div>
+        <div class="t-desc">Building DRL-based document matching and a Claude 4.5 Sonnet-powered RAG chatbot for user-uploaded documents — S3 ingestion, retrieval and generation, deployed end-to-end on AWS.</div>
       </div>
       <div class="t-item">
         <div class="t-head">
@@ -428,7 +645,7 @@
 
   <!-- CONTACT -->
   <section class="section" id="contact">
-    <div class="contact-box">
+    <div class="contact-box reveal">
       <h2>Let's build something.</h2>
       <p>Open to full-time roles and select freelance / consulting work in computer vision and applied LLM systems.</p>
       <div class="contact-links">
@@ -444,6 +661,24 @@
   <span>© 2026 Kaustubh Vihirkar</span>
   <span>Built with vision, retrieval &amp; a bit of reinforcement learning.</span>
 </footer>
+
+<script>
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    revealEls.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  }
+</script>
 
 </body>
 </html>
